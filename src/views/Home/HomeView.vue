@@ -3,10 +3,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   setup() {
+    onMounted(() => {
+      console.log("123");
+      console.log(process);
+    });
     return {};
   },
 });
