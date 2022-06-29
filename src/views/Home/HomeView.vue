@@ -1,17 +1,25 @@
 <template>
-  <div>Dora</div>
+  <div>
+    <button @click="getProducts()">test</button>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
+import axios from "axios";
 
 export default defineComponent({
   setup() {
-    onMounted(() => {
-      console.log("123");
-      console.log(process);
-    });
-    return {};
+    function getProducts() {
+      const api = "https://vue-course-api.hexschool.io/api/dora/products";
+      axios.get(api).then((res) => {
+        console.log(res.data.products);
+      });
+    }
+
+    return {
+      getProducts,
+    };
   },
 });
 </script>
