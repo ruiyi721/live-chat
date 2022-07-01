@@ -7,7 +7,9 @@ export namespace ProductApi {
    */
   export async function getProducts() {
     const [err, result] = await asyncDo($http('get', '/products'));
-
+    if (err) {
+      return;
+    }
     return result;
   }
 }

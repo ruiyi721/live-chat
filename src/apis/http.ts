@@ -5,6 +5,7 @@ export const apiBaseUrl = `${apiUrl}/api/dora`;
 
 const apiTimeoutSec = 60;
 
+// 自定義配置新建一個axios實例
 const ajax = axios.create({
   baseURL: apiBaseUrl,
   withCredentials: true,
@@ -26,6 +27,7 @@ export async function $http<T = any>(
   if (method == 'get' || method == 'GET') {
     requestData.params = payload[0];
   } else {
+    // 如果是post等method, 就讓requestData的data等於前端傳送的data, params是payload的第二項資料
     requestData.data   = payload[0];
     requestData.params = payload[1];
   }
