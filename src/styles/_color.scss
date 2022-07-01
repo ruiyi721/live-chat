@@ -1,0 +1,13 @@
+$color-map: (
+  "transparent": transparent,
+  "yellow": #d78f3a
+);
+
+@each $key, $value in $color-map {
+  .bg-color-#{$key} {
+    background-color: $value;
+  }
+  .text-color-#{$key} {
+    color: $value;
+  }
+}

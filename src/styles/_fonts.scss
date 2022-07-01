@@ -1,0 +1,48 @@
+$font-map: (
+  8: 8px,
+  10: 10px,
+  12: 12px,
+  13: 13px,
+  14: 14px,
+  15: 15px,
+  16: 16px,
+  18: 18px,
+  17: 17px,
+  19: 19px,
+  20: 20px,
+  21: 21px,
+  22: 22px,
+  23: 23px,
+  24: 24px,
+  25: 25px,
+  26: 26px,
+  27: 27px,
+  28: 28px,
+  29: 29px,
+  30: 30px,
+  32: 32px,
+  35: 35px,
+  38: 38px,
+  40: 40px,
+  42: 42px,
+  44: 44px,
+  45: 45px,
+  60: 60px,
+  100: 100px,
+);
+@each $key, $value in $font-map {
+  .ft-#{$key} {
+    font-size: $value;
+  }
+}
+a[class^='icon-']:before,
+a[class*=' icon-']:before {
+  font-family: icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

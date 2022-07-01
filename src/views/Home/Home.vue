@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <i class="icon-warn"></i>
+  <div class="d-flex">
+    <i class="icon-warn text-color-yellow ft-30"></i>
     <button @click="getProducts()">test</button>
+    <div>123</div>
   </div>
 </template>
 
