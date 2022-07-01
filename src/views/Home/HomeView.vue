@@ -6,16 +6,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
-import axios from "axios";
+import { defineComponent } from "vue";
+import { ProductApi } from '@/apis/product';
 
 export default defineComponent({
   setup() {
-    function getProducts() {
-      const api = "https://vue-course-api.hexschool.io/api/dora/products";
-      axios.get(api).then((res) => {
-        console.log(res.data.products);
-      });
+
+    async function getProducts() {
+      const res = await ProductApi.getProducts();
+      if (!res) {
+        return
+      }
+      console.log(res);
     }
 
     return {

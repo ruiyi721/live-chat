@@ -1,7 +1,13 @@
-// import { asyncDo } from '../utils/index';
+import { asyncDo } from '@/utils/index';
+import { $http } from './http';
 
-// export namespace ProductApi {
-//   export async function getProducts() {
-//     console.log('123');
-//   }
-// }
+export namespace ProductApi {
+  /**
+   * 獲取六角學院產品
+   */
+  export async function getProducts() {
+    const [err, result] = await asyncDo($http('get', '/products'));
+
+    return result;
+  }
+}
