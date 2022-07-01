@@ -1,5 +1,6 @@
 <template>
   <div>
+    <i class="icon-warn"></i>
     <button @click="getProducts()">test</button>
   </div>
 </template>
