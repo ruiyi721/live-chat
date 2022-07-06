@@ -29,6 +29,7 @@ export async function $http<T = any>(
   } else {
     // 如果是post等method, 就讓requestData的data等於前端傳送的data, params是payload的第二項資料
     requestData.data   = payload[0];
+    // 此為url上要帶的參數, ~url?ID=123, params: { ID: '123' }
     requestData.params = payload[1];
   }
 
