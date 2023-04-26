@@ -1,4 +1,4 @@
-import { asyncDo } from '@/utils/index';
+import { asyncDo } from '@/base/utils/index';
 import { $http } from './http';
 
 export namespace ProductApi {

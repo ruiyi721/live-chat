@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse, Method } from "axios";
-import { apiUrl } from "@/config";
+import { apiUrl } from "@/base/config";
 
 export const apiBaseUrl = `${apiUrl}/api/dora`;
 

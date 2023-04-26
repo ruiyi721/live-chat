@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent, watch } from "vue";
 import { useI18n } from 'vue-i18n';
-import { ProductApi } from '@/apis/product';
+import { ProductApi } from '@/base/apis/product';
 
 export default defineComponent({
   setup() {
