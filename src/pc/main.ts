@@ -4,6 +4,7 @@ import store from "@/base/store";
 import "@/registerServiceWorker";
 import App from "@/pc/App.vue";
 import router from "@/pc/router";
+import components from './components';
 
 import '@/base/styles/main.scss';
 
@@ -11,4 +12,5 @@ createApp(App)
 .use(store)
 .use(router)
 .use(i18n)
+.use(components)
 .mount("#app");
