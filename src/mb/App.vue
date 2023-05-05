@@ -1,4 +1,6 @@
 <template>
+  <!-- vue-final-modal container -->
+  <modals-container />
   <router-view />
 </template>
 

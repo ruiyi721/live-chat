@@ -3,5 +3,6 @@ export default {
     'register': 'register',
     'login': 'login',
     'logout': 'logout',
+    'confirm': 'confirm'
   }
 };

@@ -5,12 +5,15 @@ import "@/registerServiceWorker";
 import App from "@/mb/App.vue";
 import router from "@/mb/router";
 import components from './components';
+// plugins
+import VueFinalModal from 'vue-final-modal';
 
-import '@/base/styles/main.scss';
+import '@/base/styles/main_mb.scss';
 
 createApp(App)
+.use(i18n)
 .use(store)
 .use(router)
-.use(i18n)
 .use(components)
+.use(VueFinalModal())
 .mount("#app");

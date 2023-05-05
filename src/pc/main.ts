@@ -6,7 +6,7 @@ import App from "@/pc/App.vue";
 import router from "@/pc/router";
 import components from './components';
 
-import '@/base/styles/main.scss';
+import '@/base/styles/main_pc.scss';
 
 createApp(App)
 .use(store)
