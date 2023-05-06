@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { baseUrl } from '@/base/config';
 import Main from "@/mb/views/Main.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -15,10 +16,15 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/Login",
+    name: "Login",
+    component: () => import("@/mb/views/Login/Login.vue"),
+  }
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(baseUrl),
   routes,
 });
 
