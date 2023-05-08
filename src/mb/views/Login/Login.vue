@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-center align-items-center h-75">
-    <form class="login-form">
+    <form class="login-form" @submit.prevent="login">
       <div class="my-2">
         <label for="account">account</label>
       </div>
@@ -10,7 +10,7 @@
       </div>
       <el-input id="pwd" />
 
-      <button class="login-btn">{{ $t('common.login') }}</button>
+      <button type="submit" class="login-btn">{{ $t('common.login') }}</button>
     </form>
   </div>
 </template>

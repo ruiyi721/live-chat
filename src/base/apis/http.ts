@@ -1,13 +1,14 @@
 import axios, { AxiosRequestConfig, AxiosResponse, Method } from "axios";
 import { apiUrl } from "@/base/config";
 
-export const apiBaseUrl = `${apiUrl}/api/dora`;
+export const apiBaseUrl = `${apiUrl}/api`;
 
 const apiTimeoutSec = 60;
 
 // 自定義配置新建一個axios實例
 const ajax = axios.create({
-  baseURL: apiBaseUrl,
+  // baseURL: apiBaseUrl,
+  baseURL: '/api',
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

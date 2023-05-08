@@ -12,4 +12,14 @@ export namespace ProductApi {
     }
     return result;
   }
+  /**
+   * 登入
+   */
+  export async function login() {
+    const [err, result] = await asyncDo($http('get', '/login'));
+    if (err) {
+      return;
+    }
+    return result;
+  }
 }
