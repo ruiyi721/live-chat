@@ -1,10 +1,10 @@
-const { existsSync } = require('fs');
-const merge = require('lodash.merge');
-
 const ENV = process.env;
 const appSite = ENV.SITE || ''; // package.json的script
 let config = require(`./config/base`);
 let siteConfig = {};
+
+const { existsSync } = require('fs');
+const merge = require('lodash.merge');
 
 if (appSite) {
 	const configFile = appSite + '.js'; // 決定builds config是mb或pc

@@ -8,6 +8,7 @@ import components from './components';
 // plugins
 import VueFinalModal from 'vue-final-modal';
 
+import 'element-plus/dist/index.css'
 import '@/base/styles/main_mb.scss';
 
 createApp(App)

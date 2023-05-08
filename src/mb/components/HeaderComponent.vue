@@ -1,10 +1,15 @@
 <template>
-  <div class="border">i am mb header</div>
-  <button @click="test">test</button>
+  <div class="border">
+    <p>i am mb header</p>
+    <button @click="test">call modal</button>
+    <router-link :to="{ name: 'Login' }">
+      {{ $t('common.login') }}
+    </router-link>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import useVfm from "@/base/compositions/vfm";
 import Modal from "@/mb/components/Modal.vue";
 

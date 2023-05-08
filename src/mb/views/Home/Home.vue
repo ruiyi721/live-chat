@@ -7,7 +7,6 @@
       <option value="en">English</option>
     </select>
   </div>
-  <div>{{ $t('common.login') }}</div>
 </template>
 
 <script lang="ts">
