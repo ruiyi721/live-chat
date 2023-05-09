@@ -12,7 +12,7 @@ module.exports = defineConfig({
     index: `src/${builds.appSite}/${config.entryFile || 'main.ts'}`,
   },
   publicPath: ENV.NODE_ENV === 'production' ? config.publicPath : '/',
-
+  assetsDir : config.assetsDir,
   devServer: {
     // 代理配置
     proxy: {
