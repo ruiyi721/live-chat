@@ -22,9 +22,7 @@ export default defineComponent({
       $vfm?.show({
         component: Modal,
 				bind: {
-					okCallBack: () => {
-						console.log('123');
-					}
+					okCallBack: () => {}
 				}
       });
     }

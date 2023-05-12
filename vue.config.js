@@ -16,9 +16,9 @@ module.exports = defineConfig({
   devServer: {
     // 代理配置
     proxy: {
-      // 如果请求地址以/api打头,就出触发代理机制
+      // 如果請求地址以/api打頭,就觸發代理機制
       [proxyPrefix]: {
-        target: proxyTarget, // 要代理的真实接口地址
+        target: proxyTarget, // 要代理的真實接口地址
         pathRewrite: {
           ['^' + proxyPrefix]: proxyPrefix
         },

@@ -12,14 +12,14 @@
 <script lang="ts">
 import { defineComponent, watch } from "vue";
 import { useI18n } from 'vue-i18n';
-import { ProductApi } from '@/base/apis/product';
+import { PublicApi } from '@/base/apis/public';
 
 export default defineComponent({
   setup() {
     const { locale } = useI18n();
 
     async function getProducts() {
-      const res = await ProductApi.getProducts();
+      const res = await PublicApi.getProducts();
       if (!res) {
         return
       }

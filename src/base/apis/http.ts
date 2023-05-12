@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosResponse, Method } from "axios";
+import axios, { AxiosRequestConfig, Method } from "axios";
+import { AppEvents, appEmitter } from '@/base/utils/event';
 import { apiUrl } from "@/base/config";
 
 export const apiBaseUrl = `${apiUrl}/api`;
@@ -29,7 +30,7 @@ export async function $http<T = any>(
     requestData.params = payload[0];
   } else {
     // 如果是post等method, 就讓requestData的data等於前端傳送的data, params是payload的第二項資料
-    requestData.data   = payload[0];
+    requestData.data = payload[0];
     // 此為url上要帶的參數, ~url?ID=123, params: { ID: '123' }
     requestData.params = payload[1];
   }
@@ -43,4 +44,29 @@ export async function $http<T = any>(
     }
     throw err;
   }
+}
+
+export function isResponseOK(
+  err: any,
+  result: any,
+  alertError: boolean = false
+) {
+  if(err && !result) {
+    console.warn(err, result);
+    if (err.status == 401) {
+      
+    }
+    if(alertError) {
+      const errData = err.data;
+      let message = '';
+      if (typeof errData == 'string') {
+        message = errData;
+      } else {
+        message = errData.message;
+      }
+      appEmitter.emit(AppEvents.Modal, message);
+    }
+    return false;
+  }
+  return true;
 }

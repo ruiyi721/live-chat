@@ -4,11 +4,11 @@
       <div class="my-2">
         <label for="account">account</label>
       </div>
-      <el-input id="account" />
+      <el-input v-model="loginFormData.account" id="account" />
       <div class="my-2">
         <label for="pwd">password</label>
       </div>
-      <el-input id="pwd" />
+      <el-input v-model="loginFormData.password" id="pwd" />
 
       <button type="submit" class="login-btn">{{ $t('common.login') }}</button>
     </form>
