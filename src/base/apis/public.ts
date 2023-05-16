@@ -27,9 +27,17 @@ export namespace PublicApi {
     password: string
   }) {
     const [err, result] = await asyncDo(
-      $http<{success: boolean, message: string}>('post', '/login', data)
+      $http<ILogin>('post', '/login', data)
     );
     if (!isResponseOK(err, result, true)) {
+      return null;
+    }
+    return result;
+  }
+
+  export async function checkAuth() {
+    const [err, result] = await asyncDo($http('get', '/login/checkauth'));
+    if(!isResponseOK(err, result, true)) {
       return null;
     }
     return result;

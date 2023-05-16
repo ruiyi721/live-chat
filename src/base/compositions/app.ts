@@ -1,5 +1,8 @@
 import { DefineComponent } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 import { appEmitter, AppEvents } from '@/base/utils/event';
+import { useBaseStore } from '@/base/store';
 import useVfm from './vfm';
 
 interface UseAppOptions {
@@ -8,6 +11,9 @@ interface UseAppOptions {
 
 export function useApp(opts: UseAppOptions = { }) {
   const $vfm = useVfm();
+  const store = useBaseStore();
+  const { t } = useI18n();
+  const router = useRouter();
 
   // App事件監聽
   appEmitter
@@ -19,6 +25,13 @@ export function useApp(opts: UseAppOptions = { }) {
       });
     } else {
       alert(message);
+    }
+  })
+  .on(AppEvents.Logout, () => {
+    if(store.isLogin) {
+      localStorage.removeItem('token');
+      store.logout();
+      router.push({ name: 'Login' });
     }
   })
 

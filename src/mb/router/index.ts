@@ -13,6 +13,7 @@ const routes: Array<RouteRecordRaw> = [
         path: "/Home",
         name: "Home",
         component: () => import("@/mb/views/Home/Home.vue"),
+        meta: { authRequired: true }
       },
     ],
   },
@@ -26,6 +27,12 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(baseUrl),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+  if(to.name !== 'Login' && !token) next({ name: 'Login' });
+  else next();
 });
 
 export default router;

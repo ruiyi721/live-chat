@@ -1,9 +1,31 @@
-import { createStore } from "vuex";
+import { defineStore } from 'pinia';
+import { ILogin } from '@/base/apis/interfaces/public';
 
-export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+export const useBaseStore = defineStore('baseStore', {
+  persist: true,
+  state: () => {
+    const user: ILogin = null;
+
+    return {
+      user,
+    }
+  },
+  getters: {
+    isLogin(): boolean {
+      return this.user ? true : false;
+    }
+  },
+  actions: {
+    login(data: ILogin) {
+      if(!data) {
+        return;
+      }
+      this.user = data;
+    },
+    logout() {
+      this.user = null;
+    },
+  }
 });
+
+export default useBaseStore;
