@@ -4,5 +4,9 @@ export default {
     'login': 'login',
     'logout': 'logout',
     'confirm': 'confirm'
+  },
+  'form': {
+    'account': 'account',
+    'password': 'password'
   }
 };
