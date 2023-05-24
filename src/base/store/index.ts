@@ -20,9 +20,11 @@ export const useBaseStore = defineStore('baseStore', {
       if(!data) {
         return;
       }
+      localStorage.setItem("token", data.token);
       this.user = data;
     },
     logout() {
+      localStorage.removeItem('token');
       this.user = null;
     },
   }

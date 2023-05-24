@@ -1,8 +1,9 @@
-import { DefineComponent } from 'vue';
+import { DefineComponent, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { appEmitter, AppEvents } from '@/base/utils/event';
 import { useBaseStore } from '@/base/store';
+import { loadLanguage, getLocaleInDevice } from '@/base/i18n';
 import useVfm from './vfm';
 
 interface UseAppOptions {
@@ -29,11 +30,16 @@ export function useApp(opts: UseAppOptions = { }) {
   })
   .on(AppEvents.Logout, () => {
     if(store.isLogin) {
-      localStorage.removeItem('token');
       store.logout();
       router.push({ name: 'Login' });
     }
   })
+
+  onMounted(async() => {
+    await Promise.all([
+      loadLanguage(getLocaleInDevice()),
+    ]);
+  });
 
   return {
   };

@@ -34,7 +34,6 @@ export default defineComponent({
     const { form, errors, isSubmitting, onSubmit } = useLoginForm({
       onSubmitCallback: (info) => {
         if (info) {
-          localStorage.setItem("token", info.token);
           store.login(info);
           router.push({ name: "Home" });
         }

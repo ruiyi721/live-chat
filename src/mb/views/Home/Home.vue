@@ -1,7 +1,6 @@
 <template>
   <div class="d-flex">
     <i class="icon-warn text-color-yellow ft-30"></i>
-    <button @click="getProducts()">test</button>
     <select v-model="locale">
       <option value="zhtw">繁體中文</option>
       <option value="en">English</option>
@@ -18,6 +17,7 @@ import { useI18n } from 'vue-i18n';
 import { PublicApi } from '@/base/apis/public';
 import { appEmitter, AppEvents } from '@/base/utils/event';
 import useBaseStore from '@/base/store';
+import { loadLanguage } from '@/base/i18n';
 
 export default defineComponent({
   setup() {
@@ -26,13 +26,15 @@ export default defineComponent({
 
     const isLogin = computed<boolean>(() => store.isLogin);
 
-    async function getProducts() {
-      const res = await PublicApi.getProducts();
-      if (!res) {
-        return
-      }
-      console.log(res);
-    }
+    // const localeOptions = readonly(container.localeItems);
+
+    // async function getProducts() {
+    //   const res = await PublicApi.getProducts();
+    //   if (!res) {
+    //     return
+    //   }
+    //   console.log(res);
+    // }
 
     async function checkAuth() {
       const res = await PublicApi.checkAuth();
@@ -49,8 +51,8 @@ export default defineComponent({
       appEmitter.emit(AppEvents.Logout);
     }
 
-    watch(locale, (newlocale) => {
-      localStorage.setItem("lang", newlocale);
+    watch(locale, (n) => {
+      loadLanguage(n);
     });
 
     return {
@@ -59,7 +61,6 @@ export default defineComponent({
 
       logout,
       checkAuth,
-      getProducts,
     };
   },
 });
