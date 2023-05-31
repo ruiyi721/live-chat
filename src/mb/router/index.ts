@@ -21,7 +21,12 @@ const routes: Array<RouteRecordRaw> = [
     path: "/Login",
     name: "Login",
     component: () => import("@/mb/views/Login/Login.vue"),
-  }
+  },
+  {
+    path: "/Register",
+    name: "Register",
+    component: () => import("@/mb/views/Register/Register.vue"),
+  },
 ];
 
 const router = createRouter({
@@ -29,10 +34,10 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token');
-  if(to.name !== 'Login' && !token) next({ name: 'Login' });
-  else next();
-});
+// router.beforeEach((to, from, next) => {
+//   const token = localStorage.getItem('token');
+//   if(to.name !== 'Login' && !token) next({ name: 'Login' });
+//   else next();
+// });
 
 export default router;
