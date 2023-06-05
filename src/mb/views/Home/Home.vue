@@ -26,16 +26,6 @@ export default defineComponent({
 
     const isLogin = computed<boolean>(() => store.isLogin);
 
-    // const localeOptions = readonly(container.localeItems);
-
-    // async function getProducts() {
-    //   const res = await PublicApi.getProducts();
-    //   if (!res) {
-    //     return
-    //   }
-    //   console.log(res);
-    // }
-
     async function checkAuth() {
       const res = await PublicApi.checkAuth();
       if(!res) {

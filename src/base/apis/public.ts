@@ -58,7 +58,7 @@ export namespace PublicApi {
   /**
    * 谷哥註冊登入
    */
-  export async function googleLogin(
+  export async function googleAuth(
   data: {
     access_token: string,
     token_type: string,

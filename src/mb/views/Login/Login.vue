@@ -15,7 +15,6 @@
       <button type="submit" class="login-btn" :disabled="isSubmitting">
         {{ $t("common.login") }}
       </button>
-      <GoogleLogin :callback="callback" />
       <button @click="googleLogin">Login Using Google</button>
       <p>{{ data }}</p>
     </form>
@@ -37,16 +36,6 @@ export default defineComponent({
     const router = useRouter();
     const data = ref();
 
-    const callback = (response) => {
-      data.value = response;
-    };
-    const login = () => {
-      googleTokenLogin().then((response) => {
-        data.value = response;
-        console.log("Handle the response", response.access_token);
-      });
-    };
-
     const { form, errors, isSubmitting, onSubmit } = useLoginForm({
       onSubmitCallback: (info) => {
         if (info) {
@@ -60,11 +49,12 @@ export default defineComponent({
       await googleTokenLogin().then((response) => {
         data.value = response;
       });
-      const res = await PublicApi.googleLogin(data.value, 'login');
+      const res = await PublicApi.googleAuth(data.value, 'login');
       if(!res) {
-        return
+        return;
       }
-      console.log(res, 'google login return res');
+      store.login(res);
+      router.push({ name: "Home" });
     }
 
     return {
@@ -73,8 +63,6 @@ export default defineComponent({
       errors,
       isSubmitting,
       onSubmit,
-      callback,
-      login,
       googleLogin
     };
   },

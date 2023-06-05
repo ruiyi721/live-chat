@@ -15,7 +15,7 @@
       <button type="submit" class="register-btn">
         {{ $t("common.register") }}
       </button>
-      <button @click="googleLogin">Register Using Google</button>
+      <button @click="googleRegister">Register Using Google</button>
       <p>{{ data }}</p>
     </form>
   </div>
@@ -43,15 +43,15 @@ export default defineComponent({
       },
     });
 
-    async function googleLogin() {
+    async function googleRegister() {
       await googleTokenLogin().then((response) => {
         data.value = response;
       });
-      const res = await PublicApi.googleLogin(data.value, 'register');
+      const res = await PublicApi.googleAuth(data.value, 'register');
       if(!res) {
-        return
+        return;
       }
-      console.log(res, 'google login return res');
+      router.push({ name: "Login" });
     }
 
     return {
@@ -59,7 +59,7 @@ export default defineComponent({
       form,
       errors,
       onSubmit,
-      googleLogin
+      googleRegister
     };
   }
 });
