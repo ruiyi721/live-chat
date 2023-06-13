@@ -75,6 +75,16 @@ export namespace PublicApi {
     }
     return result;
   }
+  /**
+   * 獲取輪播圖
+   */
+  export async function getCarousels() {
+    const [err, result] = await asyncDo($http('get', '/images/carousel'));
+    if(!isResponseOK(err, result)) {
+      return null;
+    }
+    return result;
+  }
 
   export async function checkAuth() {
     const [err, result] = await asyncDo($http('get', '/login/checkauth'));

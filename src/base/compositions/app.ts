@@ -38,6 +38,7 @@ export function useApp(opts: UseAppOptions = { }) {
   onMounted(async() => {
     await Promise.all([
       loadLanguage(getLocaleInDevice()),
+      store.init(),
     ]);
   });
 

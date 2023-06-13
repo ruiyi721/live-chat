@@ -3,3 +3,7 @@ export interface ILogin {
   message: string,
   token: string
 }
+
+export interface ICarousels {
+  images: string[];
+}

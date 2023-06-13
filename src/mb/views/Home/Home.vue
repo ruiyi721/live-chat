@@ -9,6 +9,9 @@
   <p v-if="isLogin">登入中</p>
   <button class="border" @click="checkAuth">測試驗證</button>
   <button class="border" @click="logout">登出</button>
+  <div v-for="(item, idx) in carousel" :key="idx">
+    <img :src="item" alt="" class="test">
+  </div>
 </template>
 
 <script lang="ts">
@@ -18,6 +21,7 @@ import { PublicApi } from '@/base/apis/public';
 import { appEmitter, AppEvents } from '@/base/utils/event';
 import useBaseStore from '@/base/store';
 import { loadLanguage } from '@/base/i18n';
+import { apiUrl } from '@/base/config';
 
 export default defineComponent({
   setup() {
@@ -25,6 +29,7 @@ export default defineComponent({
     const store = useBaseStore();
 
     const isLogin = computed<boolean>(() => store.isLogin);
+    const carousel = computed(() => store.carousel.images);
 
     async function checkAuth() {
       const res = await PublicApi.checkAuth();
@@ -48,6 +53,9 @@ export default defineComponent({
     return {
       locale,
       isLogin,
+      apiUrl,
+
+      carousel,
 
       logout,
       checkAuth,
@@ -55,3 +63,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.test {
+  width: 100%;
+  height: 100%;
+}
+</style>
