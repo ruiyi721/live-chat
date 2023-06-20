@@ -1,6 +1,6 @@
 $color-map: (
   "transparent": transparent,
-  "yellow": #d78f3a
+  "red": #e11515,
 );
 
 @each $key, $value in $color-map {

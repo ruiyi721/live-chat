@@ -4,11 +4,19 @@
     display: flex;
     align-items: center;
   }
-
   .vfm__content {
     margin: auto;
     min-width: 340px;
     border-radius: 1rem;
     background-color: #fff;
   }
+}
+
+button {
+  background: transparent;
+  cursor: pointer;
+}
+
+i {
+  display: block;
 }

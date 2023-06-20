@@ -8,6 +8,9 @@ const routes: Array<RouteRecordRaw> = [
     name: "Main",
     component: Main,
     redirect: "/Home",
+    meta: {
+      requiresAuth: true
+    },
     children: [
       {
         path: "/Home",
@@ -27,6 +30,10 @@ const routes: Array<RouteRecordRaw> = [
     name: "Register",
     component: () => import("@/mb/views/Register/Register.vue"),
   },
+  // {
+  //   path: '/:pathMatch(.*)',
+  //   redirect: 'Home',
+  // },
 ];
 
 const router = createRouter({
@@ -34,10 +41,12 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   const token = localStorage.getItem('token');
-//   if(to.name !== 'Login' && !token) next({ name: 'Login' });
-//   else next();
-// });
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+  if(to.matched.some(record => record.meta.requiresAuth) && !token) {
+    next({ name: 'Login' });
+  }
+  else next();
+});
 
 export default router;

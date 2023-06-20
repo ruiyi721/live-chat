@@ -1,22 +1,30 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center h-75">
+  <div class="d-flex text-center h-100">
     <form class="login-form" @submit.prevent="onSubmit">
-      <div class="my-2">
+      <p class="mb-5 ft-30 test">Sign In</p>
+      <div class="mb-3">
         <label for="account">account</label>
       </div>
-      <el-input v-model="form.account" id="account" />
-      <p class="ft-12 text-color-red mt-1">{{ errors.account }}</p>
-      <div class="my-2">
+      <div class="input-area">
+        <el-input v-model="form.account" id="account" />
+        <p class="err-msg ft-12 text-color-red">{{ errors.account }}</p>
+      </div>
+
+      <div class="mb-3">
         <label for="pwd">password</label>
       </div>
-      <el-input v-model="form.password" id="pwd" />
-      <p class="ft-12 text-color-red mt-1">{{ errors.password }}</p>
+      <div class="input-area">
+        <el-input v-model="form.password" id="pwd" />
+        <p class="err-msg ft-12 text-color-red">{{ errors.password }}</p>
+      </div>
 
-      <button type="submit" class="login-btn" :disabled="isSubmitting">
+      <button type="submit" class="login-btn submit" :disabled="isSubmitting">
         {{ $t("common.login") }}
       </button>
-      <button @click="googleLogin">Login Using Google</button>
-      <p>{{ data }}</p>
+      <button class="login-btn google" @click="googleLogin">
+        <i class="btn-icon sns-icon-google"></i>
+        <div>{{ $t("form.login_with_google") }}</div>
+      </button>
     </form>
   </div>
 </template>
@@ -34,7 +42,7 @@ export default defineComponent({
   setup() {
     const store = useBaseStore();
     const router = useRouter();
-    const data = ref();
+    const googleInfo = ref();
 
     const { form, errors, isSubmitting, onSubmit } = useLoginForm({
       onSubmitCallback: (info) => {
@@ -47,9 +55,9 @@ export default defineComponent({
 
     async function googleLogin() {
       await googleTokenLogin().then((response) => {
-        data.value = response;
+        googleInfo.value = response;
       });
-      const res = await PublicApi.googleAuth(data.value, 'login');
+      const res = await PublicApi.googleAuth(googleInfo.value, 'login');
       if(!res) {
         return;
       }
@@ -58,7 +66,6 @@ export default defineComponent({
     }
 
     return {
-      data,
       form,
       errors,
       isSubmitting,
@@ -71,12 +78,50 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .login-form {
-  width: 80%;
+  min-width: 360px;
+  margin: auto;
 }
 .login-btn {
   width: 100%;
-  height: 40px;
-  margin: 30px 0;
-  border-radius: 5px;
+  height: 50px;
+  border-radius: 50px;
+  @include flexbox;
+  &.submit {
+    margin: 15px 0 30px;
+    background: #19BC9B;
+    color: #fff;
+    &:hover,
+    &:active {
+      background: #17a488;
+    }
+  }
+  &.google {
+    border: 1px solid #ccc;
+  }
+}
+.input-area {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.btn-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+  @include bg-set;
+}
+.test {
+  font-family: "Alexandria", sans-serif;
+}
+.err-msg {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 7px);
+}
+:deep(.el-input__wrapper) {
+  height: 50px;
+  border-radius: 30px;
+  input {
+    text-align: center;
+  }
 }
 </style>

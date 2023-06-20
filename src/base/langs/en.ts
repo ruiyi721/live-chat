@@ -1,12 +1,13 @@
 export default {
   'common': {
-    'register': 'register',
-    'login': 'login',
-    'logout': 'logout',
-    'confirm': 'confirm'
+    'register': 'Register',
+    'login': 'Login',
+    'logout': 'Logout',
+    'confirm': 'Confirm'
   },
   'form': {
     'account': 'account',
-    'password': 'password'
+    'password': 'password',
+    'login_with_google': 'Sign in with Google'
   }
 };

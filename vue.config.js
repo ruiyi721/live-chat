@@ -30,5 +30,13 @@ module.exports = defineConfig({
         },
       }
     }
-  }
+  },
+  // 配置全局樣式變量
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "./src/base/styles/_variable.scss";`
+      }
+    }
+  },
 });

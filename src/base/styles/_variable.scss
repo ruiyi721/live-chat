@@ -1,0 +1,11 @@
+@use "sass:math";
+@mixin flexbox($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin bg-set {
+  background-repeat: no-repeat;
+  background-position: center center;
+}
