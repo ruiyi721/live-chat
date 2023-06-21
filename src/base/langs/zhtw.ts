@@ -8,6 +8,6 @@ export default {
   'form': {
     'account': '帳號',
     'password': '密碼',
-    'login_with_google': '使用 google 登入'
+    'login_with_google': '使用 Google 登入'
   }
 };

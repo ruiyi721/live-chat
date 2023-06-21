@@ -1,9 +1,10 @@
 <template>
   <div class="d-flex text-center h-100">
+    <router-link :to="{ name: 'Register' }" class="register-link">{{ $t("common.register") }}</router-link>
     <form class="login-form" @submit.prevent="onSubmit">
-      <p class="mb-5 ft-30 test">Sign In</p>
+      <p class="mb-5 ft-30 login-ttl">Sign In</p>
       <div class="mb-3">
-        <label for="account">account</label>
+        <label for="account">{{ $t("form.account") }}</label>
       </div>
       <div class="input-area">
         <el-input v-model="form.account" id="account" />
@@ -11,7 +12,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="pwd">password</label>
+        <label for="pwd">{{ $t("form.password") }}</label>
       </div>
       <div class="input-area">
         <el-input v-model="form.password" id="pwd" />
@@ -77,9 +78,24 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.register-link {
+  position: absolute;
+  right: 6rem;
+  top: 6rem;
+  border: 1px solid #ccc;
+  padding: 8px 20px;
+  border-radius: 50px;
+}
 .login-form {
-  min-width: 360px;
+  min-width: 340px;
   margin: auto;
+}
+.login-ttl {
+  font-family: "Alexandria", sans-serif;
+}
+.input-area {
+  position: relative;
+  margin-bottom: 2rem;
 }
 .login-btn {
   width: 100%;
@@ -99,18 +115,11 @@ export default defineComponent({
     border: 1px solid #ccc;
   }
 }
-.input-area {
-  position: relative;
-  margin-bottom: 2rem;
-}
 .btn-icon {
   width: 25px;
   height: 25px;
   margin-right: 20px;
   @include bg-set;
-}
-.test {
-  font-family: "Alexandria", sans-serif;
 }
 .err-msg {
   position: absolute;
@@ -120,6 +129,9 @@ export default defineComponent({
 :deep(.el-input__wrapper) {
   height: 50px;
   border-radius: 30px;
+  &.is-focus {
+    box-shadow: 0px 4px 18px -6px rgba(0, 0, 0, 0.2);
+  }
   input {
     text-align: center;
   }

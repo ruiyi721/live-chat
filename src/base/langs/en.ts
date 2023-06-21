@@ -1,6 +1,6 @@
 export default {
   'common': {
-    'register': 'Register',
+    'register': 'Sign Up',
     'login': 'Login',
     'logout': 'Logout',
     'confirm': 'Confirm'
