@@ -1,3 +1,8 @@
+.home-bg {
+  background-image: linear-gradient(to right bottom, rgba(176, 192, 215, 0.8), rgba(85, 120, 170, 0.8)),
+    url('~@/base/assets/img/home-bg.jpg');
+}
+
 // modal
 .base-modal {
   .vfm__container {
@@ -23,4 +28,11 @@ i {
 
 a {
   text-decoration: none;
+}
+
+.position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

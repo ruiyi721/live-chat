@@ -11,6 +11,7 @@ import piniaPluginPersistedState from "pinia-plugin-persistedstate";
 import vue3GoogleLogin from 'vue3-google-login';
 
 import 'element-plus/dist/index.css';
+import 'vue3-carousel/dist/carousel.css';
 import '@/base/styles/main_mb.scss';
 
 const googleClientId = process.env.VUE_APP_GOOGLE_AUTH;

@@ -1,31 +1,36 @@
 <template>
-  <div class="d-flex">
-    <i class="icon-warn text-color-yellow ft-30"></i>
-    <select v-model="locale">
-      <option value="zhtw">繁體中文</option>
-      <option value="en">English</option>
-    </select>
+  <div class="home-bg">
+    <div class="text-center position-center text-color-white">
+      <p class="title mb-4">Hi , I'm Dora Chen.</p>
+      <p>Engineer, designer.</p>
+    </div>
   </div>
-  <p v-if="isLogin">登入中</p>
+  
+  <p v-if="isLogin">{{ $t('common.login') }}</p>
   <button class="border" @click="checkAuth">測試驗證</button>
   <button class="border" @click="logout">登出</button>
-  <div v-for="(item, idx) in carousel" :key="idx">
-    <img :src="item" alt="" class="test">
-  </div>
+  <!-- <vue-carousel :items-to-show="1.5" :snap-align="'start'" :wrap-around="true">
+    <slide v-for="(item, idx) in carousel" :key="idx">
+      <div class="w-100">
+        <img :src="item" class="test-img" />
+      </div>
+    </slide>
+
+    <template #addons>
+      <navigation />
+      <pagination />
+    </template>
+  </vue-carousel> -->
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, computed } from "vue";
-import { useI18n } from 'vue-i18n';
+import { defineComponent, computed } from "vue";
 import { PublicApi } from '@/base/apis/public';
 import { appEmitter, AppEvents } from '@/base/utils/event';
 import useBaseStore from '@/base/store';
-import { loadLanguage } from '@/base/i18n';
-import { apiUrl } from '@/base/config';
 
 export default defineComponent({
   setup() {
-    const { locale } = useI18n();
     const store = useBaseStore();
 
     const isLogin = computed<boolean>(() => store.isLogin);
@@ -46,14 +51,8 @@ export default defineComponent({
       appEmitter.emit(AppEvents.Logout);
     }
 
-    watch(locale, (n) => {
-      loadLanguage(n);
-    });
-
     return {
-      locale,
       isLogin,
-      apiUrl,
 
       carousel,
 
@@ -65,8 +64,35 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.test {
+.home-bg {
+  height: 100vh;
   width: 100%;
-  height: 100%;
+  position: relative;
+  @include bg-set;
+  background-size: cover;
+}
+.title {
+	font: bold 300% "Poppins", helvetica;
+	border-right: .1em solid #fff;
+	width: 16ch;
+	white-space: nowrap;
+	overflow: hidden;
+	-webkit-animation: typing 2s steps(21, end),
+	  blink-caret .5s step-end infinite alternate;
+}
+.test-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
 }
 </style>
