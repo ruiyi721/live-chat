@@ -76,8 +76,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .register-link {
   position: absolute;
-  right: 6rem;
-  top: 6rem;
+  right: 25px;
+  top: 50px;
   border: 1px solid #ccc;
   padding: 8px 20px;
   border-radius: 50px;

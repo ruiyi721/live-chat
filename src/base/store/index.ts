@@ -9,10 +9,12 @@ export const useBaseStore = defineStore('baseStore', {
     const carousel: ICarousels = {
       images: [],
     };
+    const config = null;
 
     return {
       user,
-      carousel
+      carousel,
+      config
     }
   },
   getters: {
@@ -24,12 +26,16 @@ export const useBaseStore = defineStore('baseStore', {
     init() {
       this.getCarousel();
     },
-    login(data: ILogin) {
+    async login(data: ILogin) {
       if(!data) {
         return;
       }
       localStorage.setItem("token", data.token);
       this.user = data;
+      const res = await PublicApi.checkAuth();
+      if(res) {
+        this.config = res;
+      }
     },
     logout() {
       localStorage.removeItem('token');

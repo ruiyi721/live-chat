@@ -3,7 +3,8 @@ export default {
     'register': 'Sign Up',
     'login': 'Login',
     'logout': 'Logout',
-    'confirm': 'Confirm'
+    'confirm': 'Confirm',
+    'login_status': '登入中'
   },
   'form': {
     'account': 'account',
